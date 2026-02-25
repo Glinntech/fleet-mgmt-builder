@@ -130,6 +130,7 @@ jobs:
           BUILDKIT_PROGRESS: plain
           NEXT_PUBLIC_BASE_API_URL: ${{ steps.configure_env.outputs.next_public_base_api_url }}
           NEXT_PUBLIC_GEOFENCE_API_URL: ${{ steps.configure_env.outputs.next_public_geofence_api_url }}
+          NEXT_PUBLIC_PUSHER_BEAMS_INSTANCE_ID: ${{ secrets.NEXT_PUBLIC_PUSHER_BEAMS_INSTANCE_ID }}
 
       - name: Export stack outputs
         working-directory: ./private-repo/infra
