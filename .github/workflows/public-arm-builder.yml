@@ -76,14 +76,15 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" == "repository_dispatch" ]; then
             STACK="${{ github.event.client_payload.stack }}"
-            VERSION="${{ github.event.client_payload.version }}"
+            VERSION="${{ github.event.client_payload.sha }}"
           else
             STACK="${{ github.event.inputs.stack }}"
-            VERSION="manual-$(date +%s)"
+            VERSION=$(git rev-parse --short HEAD)
           fi
-          
+      
           echo "stack=$STACK" >> "$GITHUB_OUTPUT"
           echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+      
           echo "Deploying to stack: $STACK"
           echo "Version: $VERSION"
 
